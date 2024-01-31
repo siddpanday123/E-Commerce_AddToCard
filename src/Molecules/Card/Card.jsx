@@ -10,7 +10,8 @@ const Card = (props) => {
   const { Item } = props;
   const { products } = Item.data;
 
-  
+  const { searchInput } = useSelector((state) => state.SearchKey);
+  console.log(searchInput,"see")
   // console.log(products);
   const ElectronicData = products.filter(
     (itm) =>
@@ -39,14 +40,21 @@ const Card = (props) => {
       ? FashionData
       : products;
 
+
+      const filteredProducts = result.filter((product) => {
+        const productTitle = String(product.title).toLowerCase();
+        const filter = String(searchInput).toLowerCase();
+        return productTitle.includes(filter);
+      });
   return (
     <Container>
-      {result.map((data, Id) => (
+      {filteredProducts.map((data, Id) => (
         <Wrapper key={Id}>
           <LeftCard Item={data.images[0]} />
           <RightCard item={data} />
         </Wrapper>
       ))}
+       {filteredProducts.length === 0 && "Product Not Found...."}
     </Container>
   );
 };
