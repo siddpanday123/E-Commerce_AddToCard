@@ -43,7 +43,7 @@ const OfferCard = (props) => {
   //   return filteredItems;
   // }, []);
   
-   console.log(TotalItems,"total");
+  //  console.log(TotalItems,"total");
 // useEffect(()=>{
 //   setTotalItems( data.filter((item) => item.id == id))
 //   // if (data.length > 0) {
